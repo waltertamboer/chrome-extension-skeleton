@@ -1,6 +1,4 @@
 {
-    "name": "chrome-extension-skeleton",
-    "version": "1.0.0",
     "manifest_version": 2,
     "icons": {
         "128": "images/icon-128.png"
@@ -19,8 +17,7 @@
     "options_page": "html/options.html",
     "devtools_page": "html/devtools.html",
     "permissions": [
-        "<all_urls>",
-        "fileSystemProvider"
+        "<all_urls>"
     ],
     "file_system_provider_capabilities": {
         "source": "network"

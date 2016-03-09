@@ -85,6 +85,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
+    grunt.registerTask('update-manifest', 'Updates the manifest file with the needed information.', function () {
+        var manifest = grunt.file.readJSON('build/unpacked/manifest.json');
+        var package = grunt.file.readJSON('package.json');
+
+        manifest.name = package.name;
+        manifest.version = package.version;
+
+        grunt.file.write('build/unpacked/manifest.json', JSON.stringify(manifest, undefined, 4));
+    });
+
     grunt.registerMultiTask('crx', 'Builds the CRX file.', function () {
         var fs = require('fs');
         var NodeRSA = require('node-rsa');
@@ -135,5 +145,5 @@ module.exports = function (grunt) {
         fs.writeFileSync(this.data.publicKey, publicKey);
     });
 
-    grunt.registerTask('default', ['clean', 'jshint', 'copy', 'compress', 'crx']);
+    grunt.registerTask('default', ['clean', 'jshint', 'copy', 'update-manifest', 'compress', 'crx']);
 };
