@@ -1,0 +1,29 @@
+{
+  "name": "chrome-extension-skeleton",
+  "version": "1.0.0",
+  "description": "A skeleton application to build chrome extensions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "skeleton"
+  ],
+  "author": {
+    "name": "Walter Tamboere",
+    "email": "walter@tamboer.nl",
+    "url": "http://waltertamboer.nl"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "node-rsa": "^0.3.2"
+  }
+}

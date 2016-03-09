@@ -1,0 +1,47 @@
+{
+    "name": "chrome-extension-skeleton",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "icons": {
+        "128": "images/icon-128.png"
+    },
+    "browser_action": {
+        "default_title": "Chrome Extension",
+        "default_icon": "images/icon-128.png",
+        "default_popup": "html/popup.html"
+    },
+    "background": {
+        "persistent": false,
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "options_page": "html/options.html",
+    "devtools_page": "html/devtools.html",
+    "permissions": [
+        "<all_urls>",
+        "fileSystemProvider"
+    ],
+    "file_system_provider_capabilities": {
+        "source": "network"
+    },
+    "web_accessible_resources": [
+        "js/*",
+        "html/*",
+        "css/*",
+        "images/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "js/libs/jquery.min.js",
+                "js/content.js"
+            ]
+        }
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'"
+}
