@@ -19,6 +19,11 @@ A chrome extension contains a `manifest.json` file. This file is stored in the r
 adjusted at will. Note that the file does not contain a `name` and `version` property since they will be added
 dynamically by Grunt. The name and version are taken from the package.json.
 
+## External Dependencies
+
+The `Gruntfile.js` file contains a section to copy libraries from the `node_modules` directory to the unpacked
+directory. Modify it according to your needs. Dependencies will be copied to the `build/unpacked/js/libs/` directory.
+
 ## Documentation
 
 * https://developer.chrome.com/extensions

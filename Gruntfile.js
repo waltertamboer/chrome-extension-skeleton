@@ -77,6 +77,22 @@ module.exports = function (grunt) {
                     '!js/libs/*'
                 ]
             }
+        },
+        watch: {
+            build: {
+                files: [
+                    'css/**/*.css',
+                    'html/**/*.html',
+                    'js/**/*.js',
+                    'resources/**/*.json',
+                    'Gruntfile.js',
+                    'package.json'
+                ],
+                tasks: ['default'],
+                options: {
+                    spawn: false,
+                },
+            }
         }
     });
 
@@ -84,13 +100,23 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('update-manifest', 'Updates the manifest file with the needed information.', function () {
         var manifest = grunt.file.readJSON('build/unpacked/manifest.json');
         var package = grunt.file.readJSON('package.json');
 
-        manifest.name = package.name;
-        manifest.version = package.version;
+        if (!manifest.name) {
+            manifest.name = package.name;
+        }
+
+        if (!manifest.short_name) {
+            manifest.short_name = package.name;
+        }
+
+        if (!manifest.version) {
+            manifest.version = package.version;
+        }
 
         grunt.file.write('build/unpacked/manifest.json', JSON.stringify(manifest, undefined, 4));
     });
